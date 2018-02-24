@@ -7,3 +7,15 @@ cmake_install.cmake
 install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
+/build/
+
+.settings
+.idea
+.cproject
+.ninja_deps
+.ninja_log
+.project
+Battleships
+Battleships.cbp
+build.ninja
+rules.ninja

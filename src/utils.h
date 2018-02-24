@@ -1,9 +1,14 @@
+#ifndef BATTLESHIPS_UTILS_H_
+#define BATTLESHIPS_UTILS_H_
+
 #include <string>
 #include <ncurses.h>
 
 namespace ts {
 
-void drawText(std::size_t x, std::size_t y, std::string text);
-void drawCharacter(std::size_t x, std::size_t y, char c);
+void drawBigText(std::size_t y, std::size_t x, std::string text);
+void drawBigCharacter(std::size_t y, std::size_t x, char c);
 
-}
+} // namespace ts
+
+#endif // BATTLESHIPS_UTILS_H_

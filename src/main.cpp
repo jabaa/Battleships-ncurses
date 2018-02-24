@@ -1,6 +1,5 @@
 #include "Battleships.h"
 #include "utils.h"
-#include <ncurses.h>
 #include <iostream>
 
 int main() {

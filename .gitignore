@@ -1,21 +1,33 @@
+Testing
+Makefile
+install_manifest.txt
+compile_commands.json
+/build/
+Battleships
+Battleships.cbp
+
+# cmake
 CMakeCache.txt
 CMakeFiles
 CMakeScripts
-Testing
-Makefile
-cmake_install.cmake
-install_manifest.txt
-compile_commands.json
 CTestTestfile.cmake
-/build/
+cmake_install.cmake
 
+# clion
 .settings
 .idea
+
+# eclipse
 .cproject
+.project
+
+# ninja
 .ninja_deps
 .ninja_log
-.project
-Battleships
-Battleships.cbp
 build.ninja
 rules.ninja
+
+# conan
+conanbuildinfo.cmake
+conanbuildinfo.txt
+conaninfo.txt

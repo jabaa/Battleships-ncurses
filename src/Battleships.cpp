@@ -1,6 +1,7 @@
 #include "Battleships.h"
 #include "Field.h"
 #include "Ncurses.h"
+#include "SettingField.h"
 #include "utils.h"
 #include <stdexcept>
 
@@ -71,7 +72,7 @@ void Battleships::startLocalGame() {
 
 bool Battleships::setShips() {
 	clear();
-	Field field(3, 3);
+	SettingField sField(3, 3);
 	drawField(3, 3);
     drawShiplist(10, 3);
 	return true;

@@ -2,7 +2,6 @@
 #define BATTLESHIPS_UTILS_H_
 
 #include <string>
-#include <curses.h>
 
 namespace ts {
 

@@ -14,7 +14,7 @@ Battleships::Battleships() : quit(false), state(State::MainMenu) {
         throw std::logic_error("Only one instance of class Battleships allowed");
     }
     initialized = true;
-    initscr();
+    ts::Ncurses::initscr();
 
     drawTitle();
     run();
@@ -22,14 +22,14 @@ Battleships::Battleships() : quit(false), state(State::MainMenu) {
 
 Battleships::~Battleships() {
     initialized = false;
-    endwin();
+    ts::Ncurses::endwin();
 }
 
 void Battleships::drawTitle() {
-    curs_set(0);
+    ts::Ncurses::curs_set(false);
     drawBigText(2, 10, "BATTLESHIPS");
     ts::Ncurses::mvprintw(10, 15, "Press any key");
-    getch();
+    ts::Ncurses::getch();
 }
 
 void Battleships::run() {
@@ -43,15 +43,15 @@ void Battleships::run() {
 }
 
 void Battleships::showMainMenu() {
-	clear();
+	ts::Ncurses::clear();
     drawBigText(2, 10, "BATTLESHIPS");
 	ts::Ncurses::mvprintw(10, 15, "1 - Local game");
 	ts::Ncurses::mvprintw(11, 15, "(2 - Network game) IN PROGRESS");
 	ts::Ncurses::mvprintw(12, 15, "Q - Quit");
 
-    noecho();
+    ts::Ncurses::noecho();
 
-    switch (getch()) {
+    switch (ts::Ncurses::getch()) {
     case '1':
     	startLocalGame();
     	break;
@@ -71,7 +71,7 @@ void Battleships::startLocalGame() {
 }
 
 bool Battleships::setShips() {
-	clear();
+	ts::Ncurses::clear();
 	SettingField sField(3, 3);
 	drawField(3, 3);
     drawShiplist(10, 3);
@@ -86,7 +86,7 @@ void Battleships::drawField(std::size_t y, std::size_t x) {
 			ts::Ncurses::mvprintw(y + 2 + 2*i, x + 2 + 2*j, 'O');
 		}
 	}
-	getch();
+	ts::Ncurses::getch();
 }
 
 void Battleships::drawShiplist(std::size_t y, std::size_t x) {
@@ -97,7 +97,7 @@ void Battleships::drawShiplist(std::size_t y, std::size_t x) {
 			ts::Ncurses::mvprintw(y + 2 + 2*i, x + 2 + 2*j, 'O');
 		}
 	}
-	getch();
+	ts::Ncurses::getch();
 }
 
 } // namespace ts

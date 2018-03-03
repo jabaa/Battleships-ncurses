@@ -18,7 +18,7 @@ else()
     set(DO_CLANG_TIDY "${CLANG_TIDY_EXE}" "-checks=*,-clang-analyzer-alpha.* -header-filter=.*")
 endif()
 
-include_directories(${CURSES_INCLUDE_DIR})
+include_directories(${CONAN_INCLUDE_DIRS_NCURSES})
 add_executable(Battleships src/main.cpp src/Battleships.cpp src/Battleships.h src/utils.cpp src/utils.h src/Field.cpp src/Field.h src/Ncurses.cpp src/Ncurses.h src/SettingField.cpp src/SettingField.h)
 
 target_link_libraries(Battleships ${CONAN_LIBS_NCURSES})

@@ -31,3 +31,4 @@ rules.ninja
 conanbuildinfo.cmake
 conanbuildinfo.txt
 conaninfo.txt
+conan.cmake

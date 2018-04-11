@@ -1,12 +1,19 @@
-#include "Battleships.h"
-#include "utils.h"
-#include <iostream>
+#include "Ui/Ncurses/Ui.h"
+#include <string>
 
-int main() {
-    try {
-        ts::Battleships bs;
-    } catch (std::exception& e) {
-        std::cout << "Error: " << e.what() << std::endl;
+int main(int argc, char** argv) {
+    bool noGui(false);
+    for (int i = 1; i < argc; ++i) {
+        if (std::string(argv[i]) == "--noGUI") {
+            noGui = true;
+        }
     }
-    return 0;
+
+    int ret(0);
+    if (noGui) {
+        ts::Ui::Ncurses::Ui ui;
+        ret = ui.exec();
+    } else {}
+
+    return ret;
 }

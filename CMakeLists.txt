@@ -1,8 +1,20 @@
-cmake_minimum_required (VERSION 3.6.3)
+cmake_minimum_required (VERSION 3.5.1)
 project (Battleships)
 
 set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_SOURCE_DIR src)
 
+if(NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
+    message(STATUS "Downloading conan.cmake from https://github.com/conan-io/cmake-conan")
+    file(DOWNLOAD "https://raw.githubusercontent.com/conan-io/cmake-conan/v0.8/conan.cmake"
+            "${CMAKE_BINARY_DIR}/conan.cmake")
+endif()
+
+include(${CMAKE_BINARY_DIR}/conan.cmake)
+
+conan_cmake_run(CONANFILE conanfile.txt
+       BASIC_SETUP
+       BUILD missing)
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 
@@ -18,10 +30,15 @@ else()
     set(DO_CLANG_TIDY "${CLANG_TIDY_EXE}" "-checks=*,-clang-analyzer-alpha.* -header-filter=.*")
 endif()
 
-include_directories(${CONAN_INCLUDE_DIRS_NCURSES})
-add_executable(Battleships src/main.cpp src/Battleships.cpp src/Battleships.h src/utils.cpp src/utils.h src/Field.cpp src/Field.h src/Ncurses.cpp src/Ncurses.h src/SettingField.cpp src/SettingField.h)
+include_directories(${CMAKE_SOURCE_DIR})
+include_directories(${CONAN_INCLUDE_DIRS_GSL_MICROSOFT})
 
-target_link_libraries(Battleships ${CONAN_LIBS_NCURSES})
+add_subdirectory(src/Application)
+add_subdirectory(src/Ui)
+
+add_executable(Battleships src/main.cpp)
+
+target_link_libraries(Battleships UiNcurses)
 
 set_target_properties(
     Battleships PROPERTIES
